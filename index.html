@@ -152,18 +152,22 @@
         <div class="hero-body">
           <video poster="" id="tree" autoplay controls muted loop height="100%">
             <!-- Your video here -->
-            <source src="static/videos/Shoe.mov" type="video/mp4" />
+            <source src="static/videos/Arshoe.mp4" type="video/mp4" />
           </video>
           <h2 class="subtitle has-text-centered">
-            (Add the 3d video of a shoe here....) A 3D model of a
-            shoe(reconstructed from images) viewed from mobile app. The mobile
-            app comes with a 3D viewer where user can view from different
-            angles.
+            We collected 101 videos (30 seconds each) from students, extracting 30 images from each for a dataset of 3,030 images. 
+            Instead of using the resource-intensive Segment Anything Model (SAM), they created a smaller 6.5MB model by first training
+             YOLO for shoe detection, using SAM for initial annotations, and manually correcting errors. The workflow included Gaussian 
+             Splatting for 3D modeling, and mesh extraction using SuGaR. The final stage 
+             involved integrating the 3D models into an augmented reality application using Lens Studio, which was then implemented in a 
+              mobile app, allowing users to virtually try on shoes.
           </h2>
         </div>
       </div>
     </section>
     <!-- End teaser video -->
+
+    
 
     <!-- Paper abstract -->
     <section class="section hero is-light">
@@ -194,108 +198,109 @@
     </section>
     <!-- End paper abstract -->
 
-    <!-- Image carousel -->
-    <section class="hero is-small">
-      <div class="hero-body">
-        <div class="container">
-          <div id="results-carousel" class="carousel results-carousel">
-            <div class="item">
-              <!-- Your image here -->
-              <img src="static/images/3D_samples.png" alt="MY ALT TEXT" />
-              <h2 class="subtitle has-text-centered">
-                (add data collection images from arxiv and also the one from
-                canva showing multiple small images of single shoe) We collected
-                101 videos, each lasting 30 seconds, taken with different
-                cameras, such as Poco X3, Samsung Galaxy S9, Redmi 12, and
-                others.
-              </h2>
-            </div>
-            <div class="item">
-              <!-- Your image here -->
-              <img src="static/images/segmentation.png" alt="MY ALT TEXT" />
-              <h2 class="subtitle has-text-centered">
-                Prediction on Test set from trained YOLO v8 model
-              </h2>
-            </div>
-            <div class="item">
-              <!-- Your image here -->
-              <img src="static/images/carousel3.jpg" alt="MY ALT TEXT" />
-              <h2 class="subtitle has-text-centered">Mesh extraction</h2>
-            </div>
-            <div class="item">
-              <!-- Your image here -->
-              <img src="static/images/carousel4.jpg" alt="MY ALT TEXT" />
-              <h2 class="subtitle has-text-centered">Shoe in AR</h2>
-            </div>
-          </div>
+    <!-- Video carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop"> <!-- Added max-desktop class for narrower width -->
+      <h2 class="title is-3">Mobile App </h2>
+      <div id="results-carousel" class="carousel results-carousel small-video-carousel"> <!-- Added custom class -->
+        <div class="item item-video1">
+          <video poster="" id="video1" autoplay controls muted loop width="100%"> <!-- Changed to width instead of height -->
+            <source src="static/videos/goodshoe.mp4" type="video/mp4">
+          </video>
         </div>
-      </div>
-    </section>
-    <!-- End image carousel -->
+        <div class="item item-video2">
+          <video poster="" id="video2" autoplay controls muted loop width="100%">
+            <source src="static/videos/carousel2.mp4" type="video/mp4">
+          </video>
+        </div>
 
-    <!-- Youtube video showing the mobile app interface of viewing 3d model of shoe and virtually trying it.  -->
-    <section class="hero is-small is-light">
-      <div class="hero-body">
-        <div class="container">
-          <!-- Paper video. -->
-          <h2 class="title is-3">Video Presentation</h2>
-          <div class="columns is-centered has-text-centered">
-            <div class="column is-four-fifths">
-              <div class="publication-video">
-                <!-- Youtube embed code here -->
-                <iframe
-                  src="https://www.youtube.com/embed/JkaxUblCGz0"
-                  frameborder="0"
-                  allow="autoplay; encrypted-media"
-                  allowfullscreen
-                ></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
-    </section>
-    <!-- End youtube video -->
+    </div>
+  </div>
+</section>
 
-    <!-- Image carousel for results -->
-    <section class="hero is-small">
-      <div class="hero-body">
-        <div class="container">
-          <div id="results-carousel" class="carousel results-carousel">
-            <div class="item">
-              <!-- Your image here -->
-              <img src="static/images/carousel1.jpg" alt="MY ALT TEXT" />
-              <h2 class="subtitle has-text-centered">
-                Add the result section images and corresponding from arxiv paper
-                take reference from this: https://vision.huji.ac.il/probegen/
-              </h2>
-            </div>
-            <div class="item">
-              <!-- Your image here -->
-              <img src="static/images/carousel2.jpg" alt="MY ALT TEXT" />
-              <h2 class="subtitle has-text-centered">
-                Second image description.
-              </h2>
-            </div>
-            <div class="item">
-              <!-- Your image here -->
-              <img src="static/images/carousel3.jpg" alt="MY ALT TEXT" />
-              <h2 class="subtitle has-text-centered">
-                Third image description.
-              </h2>
-            </div>
-            <div class="item">
-              <!-- Your image here -->
-              <img src="static/images/carousel4.jpg" alt="MY ALT TEXT" />
-              <h2 class="subtitle has-text-centered">
-                Fourth image description.
-              </h2>
-            </div>
-          </div>
+
+
+        <!-- Image carousel for results -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="container is-max-desktop hero hero-body">
+        <h2 class="subtitle has-text-centered">
+          The project compared three segmentation models: YOLOv8n (2.7M parameters), YOLOv8m (27.3M parameters), and Unet with Resnet backbone (32M parameters). All achieved high accuracy with IoU scores above 0.94, with YOLOv8m performing best at 0.957 IoU. The final 6.5MB segmentation model was dramatically smaller than SAM's 1.5GB, significantly reducing resource requirements.
+  The Gaussian Splatting model achieved an average PSNR of 34, demonstrating good quality 3D reconstruction. During mesh extraction with Sugar, the loss initially decreased before unexpectedly increasing, highlighting the importance of saving the optimal model before divergence.
+        </h2>
+      </div>
+
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <img src="static/images/yolov8n.png" alt="MY ALT TEXT" />
+          <h2 class="subtitle has-text-centered caption">
+            Training graph of yolov8n
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/unet.png" alt="MY ALT TEXT" />
+          <h2 class="subtitle has-text-centered caption">
+            Training graph of Attention Unet
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/sementation_table.png" alt="MY ALT TEXT" />
+
+        </div>
+        <div class="item">
+          <img src="static/images/psnr.png" alt="MY ALT TEXT" />
+
         </div>
       </div>
-    </section>
-    <!-- End image carousel -->
+    </div>
+  </div>
+</section>
+<!-- End image carousel -->
+
+<style>
+.item {
+  margin-bottom: 50px; /* Increase this value to add more space */
+}
+
+/* OR target the pagination specifically */
+.carousel .carousel-pagination {
+  margin-top: 50px; /* Increase this value to add more space */
+}
+
+/* For more specific targeting */
+#results-carousel .carousel-pagination {
+  margin-top: 50px;
+}
+
+</style>
+
+
+
+<style>
+
+.small-video-carousel {
+  max-width: 60%; /* Adjust this percentage to control overall width */
+  margin: 0 auto; /* Center the carousel */
+}
+
+.small-video-carousel .item video {
+  max-height: 400px; /* Set a maximum height */
+  width: auto; /* Allow width to adjust proportionally */
+  margin: 0 auto; /* Center the video */
+}
+
+/* Make sure dots don't appear too close to videos */
+.small-video-carousel .carousel-pagination {
+  margin-top: 20px;
+  display: none !important; /* Keep the dots hidden */
+}
+</style>
+
+
+
 
     <!-- BibTeX Citation -->
     <section class="section" id="BibTeX">
